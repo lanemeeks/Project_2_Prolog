@@ -6,13 +6,14 @@ avoid_shift(_,_) :- fail.
 
 % main plan predicate
 plan() :-
-%
-% define me :(
-% assign employees to shifts
-% build schedule moring
-% build scheudle evening
-% build schedule night
-% validate all three schedules then its good
+    findall(E, employee(E), Employees),
+    assign_all_employees(Employees, Assignments),
+    build_shift_schedule(morning, Assignments, Morning),
+    valid_schedule(Morning),
+    build_shift_schedule(evening, Assignments, Evening),
+    valid_schedule(Evening),
+    build_shift_schedule(night, Assignments, Night),
+    valid_schedule(Night).
 
 % base case for the recursive rule below
 assign_all_employees([], []).
@@ -68,3 +69,12 @@ remove_empty_workstations([workstation(W, Employees) | Rest], [workstation(W, Em
     Employees \= [],
     remove_empty_workstations(Rest, Cleaned).
 
+% recursively validating the schedule built already
+validate_schedule([]).
+
+valid_schedule([workstation(W, Employees) | Rest]) :-
+    length(Employees, Count),
+    workstation(W, Min, Max),
+    Count >= Min,
+    Count =< Max,
+    validate_schedule(Rest).
