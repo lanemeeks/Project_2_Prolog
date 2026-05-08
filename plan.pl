@@ -5,7 +5,7 @@ avoid_shift(_,_) :- fail.
 % so these above statements will be false if they dont exist instead of crashing
 
 % main plan predicate
-plan() :-
+plan(plan(Morning, Evening, Night)) :-
     findall(E, employee(E), Employees),
     assign_all_employees(Employees, Assignments),
     build_shift_schedule(morning, Assignments, Morning),
@@ -70,11 +70,11 @@ remove_empty_workstations([workstation(W, Employees) | Rest], [workstation(W, Em
     remove_empty_workstations(Rest, Cleaned).
 
 % recursively validating the schedule built already
-validate_schedule([]).
+valid_schedule([]).
 
 valid_schedule([workstation(W, Employees) | Rest]) :-
     length(Employees, Count),
     workstation(W, Min, Max),
     Count >= Min,
     Count =< Max,
-    validate_schedule(Rest).
+    valid_schedule(Rest).
