@@ -13,3 +13,6 @@ May 8th, 2026 9:07am
   Note that it's 10:09 am and I'm still testing
 May 8th, 2026, 11:02am
   Ok, I had a hard time testing my program with the given input examples because they just take so long to run so I tested my program with a couple smaller test cases and they worked just fine. I achieved my goals for this session and I think I might be able to submit my code now. I completed the valid schedule predicates and I built out my main plan predicate.
+
+May 8th, 2026, 11:11am
+Final devlog entry, I'm writing my README file and then downloading my git file and submitting. Thank you!
