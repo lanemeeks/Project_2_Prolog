@@ -1,4 +1,5 @@
-% starting with the default predicates to handle the undefined cases
+
+% starting with the default predicates to handle the undefined cases, comment out if used in input
 workstation_idle(_,_) :- fail.
 avoid_workstation(_,_) :- fail.
 avoid_shift(_,_) :- fail.
